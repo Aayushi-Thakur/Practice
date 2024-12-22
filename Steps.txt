@@ -1,0 +1,94 @@
+Remove Access First
+=========================
+
+control Pannel -- User Account -- manage windows credentials -- (remove GitHub and Docker access)
+------------------------------------------------
+
+// Check versions
+-----------------------------------------------
+java -version
+javac -version
+git --version
+docker --version
+-----------------------------------------------
+
+//VS CODE
+-----------------------------------
+Download
+1.Java Extension Pack.
+2.Docker.
+-------------------------------------
+
+//CREATE JAVA FILE
+
+Create LargestNumberSum.java and add:
+
+import java.util.Scanner;
+
+public class LargestNumberSum {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter the first number: ");
+        int num1 = sc.nextInt();
+
+        System.out.println("Enter the second number: ");
+        int num2 = sc.nextInt();
+
+        System.out.println("Enter the third number: ");
+        int num3 = sc.nextInt();
+
+        // Find the largest number
+        int largest = Math.max(num1, Math.max(num2, num3));
+
+        // Display the largest number and its sum
+        System.out.println("Largest number is: " + largest);
+        System.out.println("Sum of all numbers is: " + (num1 + num2 + num3));
+    }
+}
+-------------------------------------
+GIT(in terminal git bash)
+-------------------------------------
+git init
+git add LargestNumberSum.java
+git commit -m "Initial commit: Added Java program for largest number and sum calculation"
+----------------------------
+Create a GitHub repository:
+-----------------------------
+git remote add origin https://github.com/YourUsername/SDM_Exam.git
+git branch -M main
+git push -u origin main
+---------------------------------
+update in java
+Copy code
+int sum = num1 + num2 + num3;
+double average = sum / 3.0;
+System.out.println("Average of all numbers is: " + average);
+------------------------------------------------------------------
+//GIT
+git status
+git add LargestNumberSum.java
+git commit -m "Added logic to calculate the average of three numbers"
+git push
+--------------------------------------------------------------
+DOCKER
+------------------------------------------
+Create Dockerfile in the project folder:
+dockerfile
+
+Copy code
+
+FROM openjdk:17
+WORKDIR /app
+COPY LargestNumberSum.java .
+RUN javac LargestNumberSum.java
+CMD ["java", "LargestNumberSum"]
+
+
+docker build -t largest-number-sum .
+docker run -it largest-number-sum
+docker images
+docker ps -a
+
+
+
